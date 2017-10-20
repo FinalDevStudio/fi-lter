@@ -1,0 +1,38 @@
+{
+  "name": "fi-lter",
+  "version": "0.0.0",
+  "description": "MongoDB and Mongoose aggregation filter and search helper",
+  "main": "index.js",
+  "author": "Final Development Studio <sorcery@finaldevstudio.com> (http://finaldevstudio.com)",
+  "homepage": "https://github.com/stgogm/fi-lter#readme",
+  "contributors": [
+    "Santiago G. Marín <santiago@finaldevstudio.com> (https://github.com/stgogm)"
+  ],
+  "license": "MIT",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://stgogm@github.com/stgogm/fi-lter.git"
+  },
+  "keywords": [
+    "mongo",
+    "mongoose",
+    "aggregate",
+    "keyword",
+    "search",
+    "filter"
+  ],
+  "bugs": {
+    "url": "https://github.com/stgogm/fi-lter/issues"
+  },
+  "dependencies": {
+    "escape-string-regexp": "^1.0.5",
+    "fi-di-regex": "^1.0.1"
+  }
+}
