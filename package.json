@@ -14,7 +14,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,13 @@
   },
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
-    "fi-di-regex": "^1.0.1"
+    "fi-di-regex": "^1.0.1",
+    "fi-is": "^1.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "faker": "^4.1.0",
+    "mocha": "^4.0.1",
+    "mongoose": "^4.12.4"
   }
 }
