@@ -1,21 +1,23 @@
-'use strict';
-
-const expect = require('chai').expect;
 const mongoose = require('mongoose');
+const { expect } = require('chai');
+const Chance = require('chance');
+
+const people = require('./people')(12);
 const filter = require('../');
 
-const DB = 'fi-lter-test';
+const chance = new Chance();
 
 describe('Fi Lter', () => {
-  before(next => {
+  const DB = 'fi-lter-test';
+
+  before((next) => {
     const options = {
       useMongoClient: true,
     };
 
     mongoose.Promise = Promise;
 
-    mongoose
-      .connect(`mongodb://localhost/${DB}`, options)
+    mongoose.connect(`mongodb://localhost/${DB}`, options)
       .then(() => next())
       .catch(err => next(err));
   });
@@ -25,62 +27,119 @@ describe('Fi Lter', () => {
   });
 
   describe('Keyword Filter', () => {
-    let Device;
+    let Person;
 
-    before(next => {
-      Device = mongoose.model('device', new mongoose.Schema({
-        brand: {
+    const SLUG_ADDFIELDS = filter.keywordsSlug([
+      '$firstname', '$lastname', '$gender', '$ssn',
+    ]);
+
+    const GROUP_BY_ID = filter.keywordsGroup([
+      'firstname', 'lastname', 'gender', 'ssn', 'createdAt', 'updatedAt',
+    ]);
+
+    before((next) => {
+      Person = mongoose.model('person', new mongoose.Schema({
+        firstname: {
           type: String,
           required: true,
         },
-        model: {
+        lastname: {
           type: String,
-          required: true
-        },
-        year: {
-          type: Number,
           required: true,
-          min: 1990,
-          max: new Date().getFullYear() + 1
         },
-        serial: {
+        birthdate: {
+          type: Date,
+          required: true,
+        },
+        ssn: {
           type: String,
-          required: true
-        },
-        price: {
-          type: Number,
           required: true,
-          min: 0
-        }
+          unique: true,
+        },
+        gender: {
+          type: String,
+          required: true,
+          enum: ['male', 'female'],
+        },
       }, {
         timestamps: true,
       }));
 
       const promises = [];
 
-      require('./devices').forEach((device) => promises.push(Device.create(device)));
+      people.forEach(person => promises.push(Person.create(person)));
 
-      Promise.all(promises)
-        .then(() => next())
-        .catch((err) => next(err));
+      Promise.all(promises).then(() => next())
+        .catch(next);
     });
 
-    it('should be 12 devices total', (next) => {
-      Device.count()
+    it(`should be ${people.length} people total`, (next) => {
+      Person.count()
+
         .then((count) => {
-          expect(count).to.equal(12);
+          expect(count).to.equal(people.length);
           next();
         })
 
         .catch(next);
     });
+
+    it('should find people by their firstname', (next) => {
+      const i = chance.integer({ min: 0, max: people.length - 1 });
+      const queryText = people[i].firstname;
+      const query = Person.aggregate();
+
+      query.append(filter.byKeywords(queryText, SLUG_ADDFIELDS, GROUP_BY_ID));
+
+      query.then((results) => {
+        expect(results.length).to.be.greaterThan(0);
+        next();
+      }).catch(next);
+    });
+
+    it('should find people by their lastname', (next) => {
+      const i = chance.integer({ min: 0, max: people.length - 1 });
+      const queryText = people[i].lastname;
+      const query = Person.aggregate();
+
+      query.append(filter.byKeywords(queryText, SLUG_ADDFIELDS, GROUP_BY_ID));
+
+      query.then((results) => {
+        expect(results.length).to.be.greaterThan(0);
+        next();
+      }).catch(next);
+    });
+
+    it('should find people by their gender', (next) => {
+      const queryText = chance.gender().toLocaleLowerCase();
+      const query = Person.aggregate();
+
+      query.append(filter.byKeywords(queryText, SLUG_ADDFIELDS, GROUP_BY_ID));
+
+      query.then((results) => {
+        expect(results.length).to.be.greaterThan(0);
+        next();
+      }).catch(next);
+    });
+
+    it('should find a person by their SSN', (next) => {
+      const i = chance.integer({ min: 0, max: people.length - 1 });
+      const queryText = people[i].ssn;
+      const query = Person.aggregate();
+
+      query.append(filter.byKeywords(queryText, SLUG_ADDFIELDS, GROUP_BY_ID));
+
+      query.then((results) => {
+        expect(results.length).to.equal(1);
+        next();
+      }).catch(next);
+    });
   });
 
-  after(next => {
-    mongoose.connection
-      .dropDatabase()
+  after((next) => {
+    mongoose.connection.dropDatabase()
       .then(() => mongoose.disconnect())
       .then(() => next())
-      .catch(err => next(err));
+      .catch(next);
   });
 });

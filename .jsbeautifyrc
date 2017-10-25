@@ -1,4 +1,5 @@
 {
+  "brace_style": "collapse,preserve-inline",
   "space_after_anon_function": true,
   "max_preserve_newlines": 2,
   "indent_with_tabs": false,
