@@ -1,6 +1,6 @@
 {
   "name": "fi-lter",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "MongoDB and Mongoose aggregation filter and search helper",
   "main": "index.js",
   "author": "Final Development Studio <sorcery@finaldevstudio.com> (http://finaldevstudio.com)",
