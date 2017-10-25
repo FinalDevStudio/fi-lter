@@ -14,7 +14,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "node_modules/.bin/mocha",
+    "docs": "node_modules/.bin/jsdox --output docs lib/index.js"
   },
   "repository": {
     "type": "git",
@@ -43,6 +44,7 @@
     "eslint": "^4.9.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "jsdox": "^0.4.10",
     "mocha": "^4.0.1",
     "mongoose": "^4.12.4"
   }

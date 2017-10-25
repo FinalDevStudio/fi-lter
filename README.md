@@ -5,9 +5,14 @@ MongoDB and Mongoose aggregation filter and search helper.
 This module is intended as a simple abstraction layer to perform basic but powerful matching with a concatenation of one or multiple model's fields.
 
 
+### Diacritic Matching
+
+The diacritic insensitive functionality is handled by [Fi Di Regex](https://github.com/FinalDevStudio/fi-di-regex). If you find an issue with this functionality, please open an issue in the [Fi Di Regex Issues](https://github.com/FinalDevStudio/fi-di-regex/issues) page.
+
+
 ## Important
 
-Although this module's functionality is nearly complete the documentation is still in progress. In the meantime, JSDocs may help you a bit.
+Although this module's functionality is nearly complete the documentation is still in progress. In the meantime, the [JSDocs](/docs/index.md) may help you a bit.
 
 
 ## Installation
@@ -34,7 +39,7 @@ const queryText = 'google';
  *
  * IMPORTANT: This stage should be prebuilt unless you use dynamic values.
  */
-const SLUG_ADDFIELDS = filter.keywordsSlug([
+const KEYWORDS_SLUG = filter.keywordsSlug([
   '$brand', '$model', '$color', '$serial', {
     $substrBytes: ['$year', 0, -1] // Convert Number to String
   }
@@ -47,7 +52,7 @@ const SLUG_ADDFIELDS = filter.keywordsSlug([
  *
  * IMPORTANT: This stage should be prebuilt unless you use dynamic values.
  */
-const GROUP_BY_ID = filter.keywordsGroup([
+const KEYWORDS_GROUP = filter.keywordsGroup([
   'brand', 'model', 'year', 'serial', 'price', 'createdAt', 'updatedAt'
 ]);
 
@@ -69,8 +74,8 @@ const query = Device.aggregate();
 // Initial aggregation stages...
 // E.g.: query.match({...});
 
-/* Build and append the keyword search stages */
-query.append(filter.byKeywords(queryText, SLUG_ADDFIELDS, GROUP_BY_ID));
+/* Build and append the keyword filter stages */
+query.append(filter.byKeywords(queryText, KEYWORDS_SLUG, KEYWORDS_GROUP));
 
 // More aggregation stages...
 // E.g.: query.project({...});
