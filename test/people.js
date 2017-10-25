@@ -6,7 +6,7 @@ module.exports = (count) => {
   const ssns = chance.unique(chance.ssn, count);
   const people = [];
 
-  const create = (i) => {
+  for (let i = 0; i < count; i += 1) {
     const gender = chance.gender().toLowerCase();
 
     people.push({
@@ -16,10 +16,6 @@ module.exports = (count) => {
       ssn: ssns[i],
       gender,
     });
-  };
-
-  for (let i = 0; i < count; i += 1) {
-    create(i);
   }
 
   return people;
