@@ -14,8 +14,8 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node_modules/.bin/mocha",
-    "docs": "node_modules/.bin/jsdox --output docs lib/index.js"
+    "test": "$(npm bin)/mocha",
+    "docs": "$(npm bin)/jsdoc --destination docs --readme README.md lib/index.js"
   },
   "repository": {
     "type": "git",
@@ -36,16 +36,16 @@
     "escape-string-regexp": "^1.0.5",
     "fi-di-regex": "^1.0.1",
     "fi-is": "^1.2.0",
-    "mongodb": "^2.2.33"
+    "mongodb": "^3.0.1"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "chance": "^1.0.11",
-    "eslint": "^4.9.0",
+    "chance": "^1.0.13",
+    "eslint": "^4.14.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
-    "jsdox": "^0.4.10",
-    "mocha": "^4.0.1",
-    "mongoose": "^4.12.4"
+    "jsdoc": "^3.5.5",
+    "mocha": "^4.1.0",
+    "mongoose": "^4.13.8"
   }
 }
