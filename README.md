@@ -12,7 +12,7 @@ The diacritic insensitive functionality is handled by [Fi Di Regex](https://gith
 
 ## Important
 
-Although this module's functionality is nearly complete the documentation is still in progress. In the meantime, the [JSDocs](/docs/index.md) may help you a bit.
+Although this module's functionality is nearly complete the documentation is still in progress. In the meantime, the [docs](https://finaldevstudio.github.io/fi-lter) may help you a bit.
 
 
 ## Installation
