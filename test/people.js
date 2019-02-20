@@ -2,7 +2,7 @@ const Chance = require('chance');
 
 const chance = new Chance();
 
-module.exports = (count) => {
+module.exports = count => {
   const ssns = chance.unique(chance.ssn, count);
   const people = [];
 
@@ -14,7 +14,7 @@ module.exports = (count) => {
       lastname: chance.last(),
       birthdate: chance.birthday(),
       ssn: ssns[i],
-      gender,
+      gender
     });
   }
 
