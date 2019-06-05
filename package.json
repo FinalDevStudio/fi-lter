@@ -33,19 +33,19 @@
     "url": "https://github.com/stgogm/fi-lter/issues"
   },
   "dependencies": {
-    "escape-string-regexp": "^1.0.5",
+    "escape-string-regexp": "^2.0.0",
     "fi-di-regex": "^1.0.1",
     "fi-is": "^1.3.1",
-    "mongodb": "^3.1.13"
+    "mongodb": "^3.2.7"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "chance": "^1.0.18",
-    "eslint": "^5.14.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-plugin-import": "^2.16.0",
-    "jsdoc": "^3.5.5",
-    "mocha": "^6.0.0",
-    "mongoose": "^5.4.14"
+    "eslint-plugin-import": "^2.17.3",
+    "jsdoc": "^3.6.2",
+    "mocha": "^6.1.4",
+    "mongoose": "^5.5.12"
   }
 }
