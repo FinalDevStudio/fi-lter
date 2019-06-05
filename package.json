@@ -1,12 +1,12 @@
 {
   "name": "fi-lter",
   "version": "0.2.4",
-  "description": "MongoDB and Mongoose aggregation filter and search helper",
+  "description": "MongoDB and Mongoose aggregation filter and search helper.",
   "main": "index.js",
-  "author": "Final Development Studio <sorcery@finaldevstudio.com> (http://finaldevstudio.com)",
-  "homepage": "https://github.com/stgogm/fi-lter#readme",
+  "author": "DOT <contact@dotstudio.io> (https://www.dotstudio.io)",
+  "homepage": "https://github.com/dotstudio-io/fi-lter#readme",
   "contributors": [
-    "Santiago G. Marín <santiago@finaldevstudio.com> (https://github.com/stgogm)"
+    "Santiago G. Marín <santiago.marin@dotstudio.io> (https://github.com/stgogm)"
   ],
   "license": "MIT",
   "directories": {
@@ -17,10 +17,7 @@
     "test": "$(npm bin)/mocha",
     "docs": "$(npm bin)/jsdoc --destination docs --readme README.md lib/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://stgogm@github.com/stgogm/fi-lter.git"
-  },
+  "repository": "github:dotstudio-io/fi-lter",
   "keywords": [
     "mongo",
     "mongoose",
@@ -30,7 +27,7 @@
     "filter"
   ],
   "bugs": {
-    "url": "https://github.com/stgogm/fi-lter/issues"
+    "url": "https://github.com/dotstudio-io/fi-lter/issues"
   },
   "dependencies": {
     "escape-string-regexp": "^2.0.0",
