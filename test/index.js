@@ -12,6 +12,7 @@ describe('Fi Lter', () => {
 
   before(next => {
     const options = {
+      useUnifiedTopology: true,
       useNewUrlParser: true,
       autoIndex: false
       // useMongoClient: true
@@ -25,8 +26,8 @@ describe('Fi Lter', () => {
       .catch(err => next(err));
   });
 
-  it('should be an object', () => {
-    expect(filter).to.be.an('object');
+  it('should be a function', () => {
+    expect(filter).to.be.a('function');
   });
 
   describe('Keyword Filter', () => {

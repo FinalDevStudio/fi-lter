@@ -2,6 +2,7 @@
   "extends": "eslint:recommended",
   "root": true,
   "parserOptions": {
+    "ecmaVersion": 10,
     "sourceType": "module"
   },
   "env": {
