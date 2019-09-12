@@ -1,6 +1,6 @@
 {
   "name": "fi-lter",
-  "version": "0.2.5",
+  "version": "1.0.0",
   "description": "MongoDB and Mongoose aggregation filter and search helper.",
   "main": "index.js",
   "author": "DOT <contact@dotstudio.io> (https://www.dotstudio.io)",
